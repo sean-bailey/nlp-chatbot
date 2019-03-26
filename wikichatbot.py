@@ -266,7 +266,7 @@ def goodbye():
 
 def picknew():
 
-    return '\*\*_'  # basically something which will never be printed james mulligan
+    return '\*\*_'  # basically something which will never be printed 
 
 
 def goodbyeresponses():
