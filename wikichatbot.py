@@ -266,7 +266,7 @@ def goodbye():
 
 def picknew():
 
-    return '\*\*_'  # basically something which will never be printed
+    return '\*\*_'  # basically something which will never be printed james mulligan
 
 
 def goodbyeresponses():
@@ -344,9 +344,14 @@ def response(user_response, sent_tokens):
     print(greetings_tfidf)
 
     sent_array = tokenchecker(sent_tokens, user_response)
+
     req_tfidf = sent_array[-1]
+
+
     fullarray = sent_array[0]
+
     index = sent_array[1]
+
     tfidf_dict = {picknew: new_tfidf,
                   thanking: thanks_tfidf,
                   goodbye: bye_tfidf,
@@ -369,16 +374,23 @@ def response(user_response, sent_tokens):
         if counter == 1:
             functiontouse = list(tfidf_dict.keys())[list(
                 tfidf_dict.values()).index(max(tfidf_dict.values()))]
-            if (str(functiontouse) != "parsingresponse"):
+            if not (req_tfidf==max(tfidf_dict.values())):
+                print("we are here")
+                print(str(functiontouse))
                 #functiontouse = tfidf_dict[max(tfidf_dict.values())]
                 return functiontouse()
             else:
                 return functiontouse(sent_tokens, req_tfidf, fullarray, index)
         else:
+            print(sent_tokens)
+            print(req_tfidf)
             return parsingresponse(sent_tokens, req_tfidf, fullarray, index)
 
     else:
-
+        print(sent_tokens)
+        print(req_tfidf)
+        print(fullarray)
+        print(index)
         return parsingresponse(sent_tokens, req_tfidf, fullarray, index)
 
 
